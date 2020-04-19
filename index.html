@@ -123,7 +123,13 @@
             bomb.setBounce(1);
             bomb.setCollideWorldBounds(true);
             bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+            this.physics.add.collider(bomb, bombs, explodeBomb, null, this);
         }
+    }
+
+    function explodeBomb(bombA, bombB) {
+        bombA.destroy();
+        bombB.destroy();
     }
 
     function update ()
