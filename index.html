@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="game"></div>
-        <div id="version">Version 4</div>
+        <div id="version">Version 5</div>
 
         <script type="text/javascript">
 
@@ -45,7 +45,6 @@
                 this.load.image('sky', 'assets/sky.png');
                 this.load.image('ground', 'assets/platform.png');
                 this.load.image('star', 'assets/star.png');
-                this.load.image('defuse', 'assets/defuse.png');
                 this.load.image('bomb', 'assets/bomb.png');
                 this.load.spritesheet('dude',
                     'assets/dude.png',
@@ -104,7 +103,8 @@
                 this.physics.add.collider(bombs, platforms);
                 this.physics.add.collider(player, bombs, hitBomb, null, this);
 
-                defuse = this.physics.add.image(400, 300, 'defuse');
+                defuse = this.physics.add.image(400, 300, 'star');
+                defuse.setTint(0x00ff00);
                 defuse.setBounce(1);
                 defuse.setCollideWorldBounds(true);
                 defuse.disableBody(true, true);
