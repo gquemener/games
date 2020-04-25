@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="game"></div>
-        <div id="version">Version 3</div>
+        <div id="version">Version 4</div>
 
         <script type="text/javascript">
 
@@ -35,6 +35,7 @@
 
             var game = new Phaser.Game(config);
 
+            var displayDefuserTimeout = null;
             var score = 0;
             var scoreText;
             var bombs;
@@ -117,7 +118,6 @@
                 bombs.clear(true, true);
             }
 
-            var displayDefuserTimeout;
             function hitBomb (player, bomb)
             {
                 this.physics.pause();
@@ -145,7 +145,7 @@
                     bomb.setCollideWorldBounds(true);
                     bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
 
-                    if (defuse.visible) {
+                    if (defuse.visible || null !== displayDefuserTimeout) {
                         return;
                     }
                     displayDefuserTimeout = setTimeout(
@@ -159,6 +159,7 @@
             {
                 defuse.enableBody(true, 400, 300, true, true);
                 defuse.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-20, 20));
+                displayDefuserTimeout = null;
             }
 
             function update ()
