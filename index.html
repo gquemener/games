@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="game"></div>
-        <div id="version">Version 5</div>
+        <div id="version">Version 6</div>
 
         <script type="text/javascript">
 
@@ -157,7 +157,8 @@
 
             function displayDefuser()
             {
-                defuse.enableBody(true, 400, 300, true, true);
+                var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+                defuse.enableBody(true, x, 300, true, true);
                 defuse.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-20, 20));
                 displayDefuserTimeout = null;
             }
